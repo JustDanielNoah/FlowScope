@@ -2,6 +2,7 @@ import { ReactNode, useState } from "react";
 import Navbar from "./Navbar";
 import ProfileMenu from "./ProfileMenu";
 import { useLocation } from "wouter";
+import flowscopeLogo from "../../assets/flowscope.png";
 
 interface LayoutProps {
   children: ReactNode;
@@ -22,7 +23,7 @@ const Layout = ({ children }: LayoutProps) => {
         <div className="mx-auto px-4 py-2 flex justify-between items-center">
           <div className="flex items-center">
             <img 
-              src="/images/flowscope.png" 
+              src={flowscopeLogo} 
               alt="FlowScope Logo" 
               className="h-10 mr-2" 
             />
