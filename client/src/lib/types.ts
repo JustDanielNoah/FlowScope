@@ -27,7 +27,22 @@ export interface Report {
   summary: string;
   healthStatus: HealthStatus;
   date: string;
-  data?: any;
+  data?: {
+    ecgData?: ECGDataPoint[];
+    vitalStats?: {
+      heartRate?: number;
+      bloodOxygen?: number;
+      bloodPressureSystolic?: number;
+      bloodPressureDiastolic?: number;
+      respiratoryRate?: number;
+      recoveryRate?: number;
+    };
+    analysis?: {
+      insights: string;
+      recommendations: string[];
+      riskAreas?: AnalysisItem[];
+    }
+  };
 }
 
 export interface VitalStats {

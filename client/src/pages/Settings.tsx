@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
@@ -15,6 +16,14 @@ import { Bell, Moon, Sun, Lock, Globe, RotateCcw } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Settings = () => {
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  // Ensure theme state is only accessed after client-side hydration
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const [notifications, setNotifications] = useState({
     alerts: true,
     weeklyReports: true,
@@ -22,7 +31,6 @@ const Settings = () => {
   });
   
   const [preferences, setPreferences] = useState({
-    theme: "light",
     language: "en",
     dataRetention: 4, // weeks
   });
@@ -44,10 +52,11 @@ const Settings = () => {
     });
     
     setPreferences({
-      theme: "light",
       language: "en",
       dataRetention: 4,
     });
+    
+    setTheme("system");
     
     toast({
       title: "Settings Reset",
@@ -55,9 +64,11 @@ const Settings = () => {
     });
   };
   
+  if (!mounted) return null;
+  
   return (
     <div className="px-4 py-6">
-      <h2 className="text-2xl font-bold text-gray-800 mb-6">Settings</h2>
+      <h2 className="text-2xl font-bold mb-6">Settings</h2>
       
       {/* Notifications */}
       <Card className="mb-6">
@@ -71,7 +82,7 @@ const Settings = () => {
           <div className="flex items-center justify-between">
             <div>
               <Label htmlFor="alerts" className="text-base">Health Alerts</Label>
-              <p className="text-sm text-gray-500">Receive alerts for critical health readings</p>
+              <p className="text-sm text-muted-foreground">Receive alerts for critical health readings</p>
             </div>
             <Switch 
               id="alerts" 
@@ -83,7 +94,7 @@ const Settings = () => {
           <div className="flex items-center justify-between">
             <div>
               <Label htmlFor="weeklyReports" className="text-base">Weekly Reports</Label>
-              <p className="text-sm text-gray-500">Get a summary of your health data every week</p>
+              <p className="text-sm text-muted-foreground">Get a summary of your health data every week</p>
             </div>
             <Switch 
               id="weeklyReports" 
@@ -95,7 +106,7 @@ const Settings = () => {
           <div className="flex items-center justify-between">
             <div>
               <Label htmlFor="newFeatures" className="text-base">New Features</Label>
-              <p className="text-sm text-gray-500">Learn about new FlowScope features and updates</p>
+              <p className="text-sm text-muted-foreground">Learn about new FlowScope features and updates</p>
             </div>
             <Switch 
               id="newFeatures" 
@@ -116,19 +127,27 @@ const Settings = () => {
             <Label className="text-base">Theme</Label>
             <div className="flex gap-2">
               <Button 
-                variant={preferences.theme === "light" ? "default" : "outline"}
-                className="w-1/2 justify-start"
-                onClick={() => setPreferences({...preferences, theme: "light"})}
+                variant={theme === "light" ? "default" : "outline"}
+                className="w-1/3 justify-start"
+                onClick={() => setTheme("light")}
               >
                 <Sun className="h-4 w-4 mr-2" /> Light
               </Button>
               
               <Button 
-                variant={preferences.theme === "dark" ? "default" : "outline"}
-                className="w-1/2 justify-start"
-                onClick={() => setPreferences({...preferences, theme: "dark"})}
+                variant={theme === "dark" ? "default" : "outline"}
+                className="w-1/3 justify-start"
+                onClick={() => setTheme("dark")}
               >
                 <Moon className="h-4 w-4 mr-2" /> Dark
+              </Button>
+              
+              <Button 
+                variant={theme === "system" ? "default" : "outline"}
+                className="w-1/3 justify-start"
+                onClick={() => setTheme("system")}
+              >
+                <Globe className="h-4 w-4 mr-2" /> System
               </Button>
             </div>
           </div>
@@ -164,7 +183,7 @@ const Settings = () => {
               step={1}
               onValueChange={(value) => setPreferences({...preferences, dataRetention: value[0]})}
             />
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-muted-foreground">
               We'll keep your health data for {preferences.dataRetention} weeks. Data older than that will be automatically deleted.
             </p>
           </div>
@@ -180,14 +199,14 @@ const Settings = () => {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-muted-foreground">
             Your health data is encrypted end-to-end and stored securely. We never share your data with third parties without your explicit consent.
           </p>
           <div className="flex flex-col gap-2">
             <Button variant="outline" className="justify-start">
               Export My Data
             </Button>
-            <Button variant="outline" className="justify-start text-red-600 hover:bg-red-50 hover:text-red-700">
+            <Button variant="outline" className="justify-start text-destructive hover:bg-destructive/10">
               Delete My Account
             </Button>
           </div>
