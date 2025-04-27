@@ -1,0 +1,36 @@
+Hey I am wokring on this app right now. App name is FlowScope. 
+CONTEXT
+There is a problem that the leading cause of death in medical field, and 3rd leading globally after violence & COVID-19 is Heart Disease. ECG charts are basically charts showing variation in heart rate over time, as well as spikes and flutters, that can help see and determine if the heart beat is healthy. You get to see the possibility of Atrial fibrillation and more from the EKG/ECG charts. The Blood-Oxygen Saturation (SpO2) in your body determines how much oxygen your blood is carrying. It can help determine if your body blood cells receive enough oxygen. Heart rate tells you about how frequently your heart is beating and can help you determine if your heart is unhealthy. Blood pressure monitoring can help determine heart attacks. Respitory rate tells you about your breathing per minute and can warn early signs of heart failure. However, a Normal human can’t read ECG, doesn't know what level of SpO2 is considered good, doesn't know what to do after knowing a heart rate, or after seeing the blood pressure, and don't know what good respitory rate is. Need to see progression of heart beating and pressure and ecg and others to determine if heart is healthy or not, and to maybe predict any heart problems/diseases.
+
+How it works is user uses a smartwatch (like apple watch, Samsung watch, Fitbit, etc.) or any other device to get their health data. This data goes into the phone's health app such as iPhone Health app, Samsung Health app, Fitbit app, and more. Our app, FlowScope requests users to approve us using their data from these apps (encrypted end to end). We only care about the data received from health apps.
+
+The data needed from the Health apps is ECG chart, Blood-Oxygen Saturation (SpO2), Heart Rate, Blood Pressure, and Respitory Rate.
+
+The problems it solves in different fields is mentioned below:
+Health - Early heart disease detection, explanation of vitals
+Economy - Reduced hospital costs, better worker productivity
+Sustainability - Less hospital waste, reduced strain on healthcare
+Mental Health - Lower anxiety, peace of mind, preventative mindset
+Security - Protects user data through encrypted data, minimal access, no third-party sharing, and data deletion after 4 weeks
+
+
+
+
+APP
+Now, with the given context, make me this app UI. It should have 3 pages on the bottom: Home, History, Health Risk. The profile icon on the top should have options to 5 more pages: Profile, Settings, and Ahout Us, Help, and Legal.
+
+
+Home:
+This would have on the top a message like "Hi <user's first name>" to feel welcoming.
+Below the message, a chart showing live ECG chart monitoring and live beats per minute. Their color should change depending on whether the ECG level and bpm is good (green), concerning (yellow), or bad (red). Whether it is good, concerning, or bad will be determined by our AI.
+Scroll below and it should show change in ECG over the past 4 weeks as a graph. It should also show in the whitespace of the chart a text of whether the trend is healthy (green), concerning (yellow), or unhealthy (red). This will also be determined by the AI.
+On the bottom right, there would be a bubble which opens a chatbox. This AI chatbox will answer all questions you might have regarding your results.
+First section to see upon opening the app.
+History:
+On the top it would give users to generate a report. The reports would have all 5 data values FlowScope gets from health apps averaged over a period of 4 weeks. It would also the analysis and suggestions AI gives. 
+Below it would store all the user reports in history with newest on top.
+
+Health Risk
+This one shows the AI analysis of all user data in a very readable and understandable way with good fonts and colors. If the user's health seems to be critical based on the results, also give a big red button to call 911 on this page. If results are critical then this screen opens first when you open the app.
+
+You can choose what to put for the other pages for now.
