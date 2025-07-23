@@ -1,6 +1,6 @@
 # Flow Scope
 
-**Flow Scope** is a mobile and web application that empowers users to monitor and understand their cardiovascular health using data from everyday wearable devices. With real-time AI analysis, proactive risk detection, and accessible reporting, Flow Scope transforms raw biometric data into actionable health insights—bridging the gap between daily wearables and medical intervention.
+**Flow Scope** is a mobile and web application that empowers users to monitor and understand their cardiovascular health using data from everyday wearable devices. With real-time AI analysis, proactive risk detection, and accessible reporting, Flow Scope transforms raw biometric data into actionable health insights, bridging the gap between daily wearables and medical intervention.
 
 ---
 
